@@ -1,1 +1,1 @@
-# python-for-kids
+# Pinkcodes-for-kids
