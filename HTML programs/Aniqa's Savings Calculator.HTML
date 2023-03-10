@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>Aniqa's Savings Calculator</title>
+<script>
+function calculate() {
+	var amount = parseInt(document.getElementById("amount").value);
+	var rate = parseFloat(document.getElementById("rate").value);
+	var years = parseInt(document.getElementById("years").value);
+	
+	var currency = document.getElementById("currency").value;
+	
+	var total = 0;
+	for ( var n = 1 ; n < years ; n++){
+		total = total * (1+rate / 100) + amount * 12;
+	}
+	
+	document.getElementById("output").innerHTML =
+	"After " + years + " years " + " you'll save " + Math.round(total) +" "+currency ;
+}
+</script>
+</head>
+<body bgcolor="#ccb2ff" > 
+<h1>Aniqa's Savings Calculator</h1>
+<form>
+	<table>
+	  <tr>
+	   <td>Please choose your Currency</td>
+	   <td><input list="radio" id="currency">
+			<datalist id="radio">
+				<option value="CAD">
+				<option value="INR">
+				<option value="USD">
+				<option value="Pound">
+				<option value="Euro">
+			</datalist>
+			</input>
+		</td>
+	   </tr>
+	   <tr>
+	   <td>Enter your monthly savings amount: </td>
+	   <td><input type="text" id="amount"></td>
+	   </tr>
+	   <tr>
+	   <td>Enter you annual intrest rate (%) : </td>
+	   <td><input type="text" id="rate"></td>
+	   </tr>
+	   <tr>
+	   <td>Enter the number of years you'll save : </td>
+	   <td><input type="text" id="years"></td>
+	   </tr>
+	</table>
+	</form>
+<button type="button" onclick="calculate()">Click to calculate your savings</button>
+<h3 id="output">See how much you'll save...</h3>
+</body>
+</html>

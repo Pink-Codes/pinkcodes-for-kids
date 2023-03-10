@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>Aniqa's guessing game</title>
+<script>
+var number = Math.floor(Math.random() * 100 + 1 );
+var tries = 0 ;
+var score=0;
+function newGame(){
+	number = Math.floor(Math.random() * 100 + 1 );
+	document.getElementById("guess").focus();
+	document.getElementById("guess").select();
+	tries = 0;
+}
+function checkGuess(){
+var guess = document.getElementById("guess").value;
+var msg = "";
+tries++;
+  if (guess < 1 || guess > 100)
+    msg = "Please enter a number between 1 and 100 only.";
+  else if (guess > number)
+	msg = guess +" was too high";
+  else if (guess < number)
+	msg = guess + " was too low";
+  else if(guess==number){
+	msg = guess + " was the correct number!You win :-)";
+	msg = msg + ". Please try a new game!!!!! :))))))";
+	msg = msg + "You won in " + tries + " tries.";
+	score = score + (100 - tries);
+	
+	var scoreboard = document.getElementById("scoreboard");
+	 scoreboard.innerHTML =
+	"You guessed " + guess +" in " + tries + " tries. <br>" + scoreboard.innerHTML;
+	
+  newGame();
+  }else {
+	msg = "Please enter number only."
+  }
+  var output = document.getElementById("output");
+
+  var totalscoreboard = document.getElementById("totalscoreboard");
+  output.innerHTML = msg;
+  
+
+  totalscoreboard.innerHTML = "Your total score is " + score;
+  
+  document.getElementById("guess").focus();
+  document.getElementById("guess").select();
+}
+</script>
+</head>
+<body onload= "newGame()">
+<h1>Aniqa's guessing game</h1>
+<form onsubmit="checkGuess();return false;">
+Enter a number between 1 to 100:
+<input type="text" id="guess" size = "5" >
+<button type="button" onclick="checkGuess()" > Guess! </button>
+</form>
+<h3 id="output">Guess a number and press the button</h3>
+<h4 id="scoreboard"> </h4>
+<b><h2 id="totalscoreboard"> </h2></b>
+</body>
+</html>

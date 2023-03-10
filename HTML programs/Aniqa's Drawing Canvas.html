@@ -1,0 +1,35 @@
+<html>
+<head>
+<title>Aniqa's Drawing Canvas</title>
+<script>
+function randomColor(){
+ var red = Math.floor(Math.random() * 240 + 16);
+ var green = Math.floor(Math.random() * 240 + 16);
+ var blue = Math.floor(Math.random() * 240 + 16);
+ 
+ return "#"+red.toString(16)+green.toString(16)+blue.toString(16);
+
+}
+function draw(e){
+	var canvas=document.getElementById("artcanvas");
+	var ctx= canvas.getContext("2d");
+	var rect = canvas.getBoundingClientRect();
+	var positionX = e.clientX - rect.left;
+	var positionY = e.clientY - rect.top;
+	ctx.fillStyle=randomColor();	
+	ctx.beginPath();
+	ctx.arc(positionX,positionY,50,0,Math.PI *2);
+	ctx.fill();
+	ctx.strokeStyle = "#cc0066";
+	ctx.beginPath();
+	ctx.arc(positionX,positionY,50,0,Math.PI *2);
+	ctx.stroke();
+}    
+
+</script>
+</head>
+<body bgcolor="#00b3b3">
+<h1>Aniqa's Drawing Canvas</h1>
+<canvas id="artcanvas" width="1090" height="400" onclick= "draw(event)" ></canvas>
+</body>
+</html>
